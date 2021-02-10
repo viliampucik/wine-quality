@@ -45,3 +45,17 @@ def ab_deployment(
         verify=False,
         timeout=30
     )
+
+
+def ab_undeployment(name, namespace):
+    token = open("/var/run/secrets/kubernetes.io/serviceaccount/token").read()
+    headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    url = "https://kubernetes.default.svc.cluster.local"
+    endpoint = f"/apis/machinelearning.seldon.io/v1/namespaces/{namespace}/seldondeployments/{name}"
+
+    return requests.delete(
+        url=url+endpoint,
+        headers=headers,
+        verify=False,
+        timeout=30
+    )

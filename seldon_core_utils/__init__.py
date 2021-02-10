@@ -1,1 +1,1 @@
-from seldon_core_utils.ab_deployment import ab_deployment
+from seldon_core_utils.ab_deployment import ab_deployment, ab_undeployment
